@@ -1,0 +1,17 @@
+--- pygraphviz-0.21/setup.py~	2005-11-10 16:11:12.000000000 +0100
++++ pygraphviz-0.21/setup.py	2005-11-26 18:41:43.091350000 +0100
+@@ -51,14 +51,6 @@
+ setup(name = "pygraphviz",
+       version = "0.21",
+       packages = ["pygraphviz","pygraphviz.tests"],
+-      ext_modules = [
+-      Extension("pygraphviz._graphviz",
+-                ["pygraphviz/graphviz_wrap.c"],
+-                include_dirs=[includes],
+-                library_dirs=[libs],
+-                libraries=["agraph","cdt"],
+-                )
+-      ],
+       package_data = {
+         '': ['*.txt'],
+         },
