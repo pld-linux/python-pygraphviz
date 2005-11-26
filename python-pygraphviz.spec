@@ -11,6 +11,8 @@ License:	GPL v2+
 Group:		Libraries/Python
 Source0:	http://dl.sourceforge.net/networkx/%{module}-%{version}.tar.gz
 # Source0-md5:	ea2a1f28dd64f616ba8d3e3080e042be
+Source1:	http://cheeseshop.python.org/packages/2.4/s/setuptools/setuptools-0.6a7-py2.4.egg
+# Source1-md5:	c6d62dab4461f71aed943caea89e6f20
 URL:		http://networkx.sourceforge.net/
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
@@ -23,6 +25,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %prep
 %setup -q -n %{module}-%{version}
+install %{SOURCE1} ./
 
 %build
 python setup.py build
