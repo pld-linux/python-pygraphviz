@@ -15,6 +15,8 @@ Source1:	http://cheeseshop.python.org/packages/2.4/s/setuptools/setuptools-0.6a7
 # Source1-md5:	c6d62dab4461f71aed943caea89e6f20
 URL:		http://networkx.sourceforge.net/
 BuildRequires:	rpm-pythonprov
+BuildRequires:	graphviz-devel
+BuildRequires:	graphviz-python
 %pyrequires_eq	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -33,7 +35,9 @@ python setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 
+#broken!
 python setup.py install --optimize=2 --root=$RPM_BUILD_ROOT
+
 
 find $RPM_BUILD_ROOT%{py_scriptdir} -type f -name "*.py" | xargs rm
 
