@@ -1,8 +1,6 @@
-# TODO:
-# - summary, desc,
 %define 	module	pygraphviz
-Summary:	Python package for 
-Summary(pl):	Pakiet dla Pythona
+Summary:	pygraphviz - wrapper to graphviz's graph data structure
+Summary(pl):	pygraphviz - wrapper dla struktury danych grafów graphviza
 Name:		python-%{module}
 Version:	0.21
 Release:	0.1
@@ -14,22 +12,26 @@ Source1:	http://cheeseshop.python.org/packages/2.4/s/setuptools/setuptools-0.6a7
 # Source1-md5:	c6d62dab4461f71aed943caea89e6f20
 Patch0:		%{name}-install.patch
 URL:		http://networkx.sourceforge.net/
-BuildRequires:	rpm-pythonprov
 BuildRequires:	graphviz-devel
 BuildRequires:	graphviz-python
+BuildRequires:	python-devel >= 1:2.3
+BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+pygraphviz is a wrapper to the graph data structure of the graphviz
+graph layout and visualization package.
 
 %description -l pl
+pygraphviz to wrapper dla struktury danych grafów pakietu do opisu i
+wizualizacji grafów graphviz.
 
 %prep
 %setup -q -n %{module}-%{version}
-install %{SOURCE1} ./
+install %{SOURCE1} .
 %patch0 -p1
-
 
 %build
 python setup.py build
