@@ -1,6 +1,6 @@
 %define 	module	pygraphviz
 Summary:	pygraphviz - wrapper to graphviz's graph data structure
-Summary(pl):	pygraphviz - wrapper dla struktury danych grafów graphviza
+Summary(pl.UTF-8):   pygraphviz - wrapper dla struktury danych grafÃ³w graphviza
 Name:		python-%{module}
 Version:	0.21
 Release:	0.1
@@ -24,9 +24,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 pygraphviz is a wrapper to the graph data structure of the graphviz
 graph layout and visualization package.
 
-%description -l pl
-pygraphviz to wrapper dla struktury danych grafów pakietu do opisu i
-wizualizacji grafów graphviz.
+%description -l pl.UTF-8
+pygraphviz to wrapper dla struktury danych grafÃ³w pakietu do opisu i
+wizualizacji grafÃ³w graphviz.
 
 %prep
 %setup -q -n %{module}-%{version}
