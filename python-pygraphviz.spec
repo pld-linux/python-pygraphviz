@@ -2,22 +2,18 @@
 Summary:	pygraphviz - wrapper to graphviz's graph data structure
 Summary(pl.UTF-8):	pygraphviz - wrapper dla struktury danych grafów graphviza
 Name:		python-%{module}
-Version:	0.21
-Release:	0.1
+Version:	0.35
+Release:	1
 License:	GPL v2+
 Group:		Libraries/Python
-Source0:	http://dl.sourceforge.net/networkx/%{module}-%{version}.tar.gz
-# Source0-md5:	ea2a1f28dd64f616ba8d3e3080e042be
-Source1:	http://cheeseshop.python.org/packages/2.4/s/setuptools/setuptools-0.6a7-py2.4.egg
-# Source1-md5:	c6d62dab4461f71aed943caea89e6f20
-Patch0:		%{name}-install.patch
-URL:		http://networkx.sourceforge.net/
+Source0:	https://networkx.lanl.gov/download/pygraphviz/%{module}-%{version}.tar.gz
+# Source0-md5:	28bf924a706e073fc9861f0beeb0b9aa
+URL:		http://networkx.lanl.gov/wiki/pygraphviz
 BuildRequires:	graphviz-devel
-BuildRequires:	graphviz-python
-BuildRequires:	python-devel >= 1:2.3
+BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
 %pyrequires_eq	python-modules
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,25 +26,29 @@ wizualizacji grafów graphviz.
 
 %prep
 %setup -q -n %{module}-%{version}
-install %{SOURCE1} .
-%patch0 -p1
 
 %build
-python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-#broken!
-python setup.py install --optimize=2 --root=$RPM_BUILD_ROOT
+%{__python} setup.py install \
+	--optimize=2 \
+	--root=$RPM_BUILD_ROOT
 
-find $RPM_BUILD_ROOT%{py_scriptdir} -type f -name "*.py" | xargs rm
-mv $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}-%{version}-py2.4.egg/%{module} $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}
+%py_postclean
+
+rm -r $RPM_BUILD_ROOT%{py_sitedir}/pygraphviz/tests
+rm -r $RPM_BUILD_ROOT%{_docdir}/pygraphviz-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
-%{py_sitescriptdir}/%{module}
+%doc README doc/*.txt
+%dir %{py_sitedir}/pygraphviz
+%attr(755,root,root) %{py_sitedir}/pygraphviz/_graphviz.so
+%{py_sitedir}/pygraphviz/*.py[co]
+%{py_sitedir}/pygraphviz-*.egg-info
