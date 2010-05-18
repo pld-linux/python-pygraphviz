@@ -10,6 +10,7 @@ Source0:	https://networkx.lanl.gov/download/pygraphviz/%{module}-%{version}.tar.
 # Source0-md5:	36a19fbebeede54d2a5ca265c047db0c
 URL:		http://networkx.lanl.gov/pygraphviz/
 BuildRequires:	graphviz-devel
+BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
