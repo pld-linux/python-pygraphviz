@@ -3,7 +3,7 @@ Summary:	pygraphviz - wrapper to graphviz's graph data structure
 Summary(pl.UTF-8):	pygraphviz - wrapper dla struktury danych grafów graphviza
 Name:		python-%{module}
 Version:	0.99.1
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		Libraries/Python
 Source0:	https://networkx.lanl.gov/download/pygraphviz/%{module}-%{version}.tar.gz
