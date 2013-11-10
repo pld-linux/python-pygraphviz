@@ -1,13 +1,13 @@
 %define 	module	pygraphviz
-Summary:	pygraphviz - wrapper to graphviz's graph data structure
-Summary(pl.UTF-8):	pygraphviz - wrapper dla struktury danych grafów graphviza
+Summary:	pygraphviz - Python interface to the Graphviz graph layout and visualization package
+Summary(pl.UTF-8):	pygraphviz - pythonowy interfejs do pakietu struktur i wizualizacji grafów Graphviz
 Name:		python-%{module}
-Version:	0.99.1
-Release:	5
-License:	GPL v2+
+Version:	1.1
+Release:	1
+License:	BSD
 Group:		Libraries/Python
 Source0:	https://networkx.lanl.gov/download/pygraphviz/%{module}-%{version}.tar.gz
-# Source0-md5:	36a19fbebeede54d2a5ca265c047db0c
+# Source0-md5:	f0b8b8e9dde1b0ef8bbdc84eb6246ab8
 URL:		http://networkx.lanl.gov/pygraphviz/
 BuildRequires:	graphviz-devel
 BuildRequires:	pkgconfig
@@ -18,12 +18,12 @@ BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-pygraphviz is a wrapper to the graph data structure of the graphviz
-graph layout and visualization package.
+pygraphviz is a Python wrapper to the graph data structure of the
+graphviz graph layout and visualization package.
 
 %description -l pl.UTF-8
-pygraphviz to wrapper dla struktury danych grafów pakietu do opisu i
-wizualizacji grafów graphviz.
+pygraphviz to pythonowy interfejs do struktury danych grafów pakietu
+do opisu i wizualizacji grafów graphviz.
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -40,7 +40,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %py_postclean
 
-rm -r $RPM_BUILD_ROOT%{_docdir}/pygraphviz-%{version}
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/pygraphviz-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
