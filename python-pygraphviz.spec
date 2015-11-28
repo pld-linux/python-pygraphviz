@@ -3,7 +3,7 @@ Summary:	pygraphviz - Python interface to the Graphviz graph layout and visualiz
 Summary(pl.UTF-8):	pygraphviz - pythonowy interfejs do pakietu struktur i wizualizacji grafów Graphviz
 Name:		python-%{module}
 Version:	1.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 Source0:	https://networkx.lanl.gov/download/pygraphviz/%{module}-%{version}.tar.gz
